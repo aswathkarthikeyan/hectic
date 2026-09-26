@@ -85,10 +85,10 @@
   --z-toast: 2000;
   --z-nav: 500;
 
-  /* Safe areas (iPhone) */
-  --safe-top: env(safe-area-inset-top, 20px);
-  --safe-bottom: env(safe-area-inset-bottom, 34px);
-  --nav-height: 64px;
+  /* Safe areas (iPhone & Dynamic Island) */
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --nav-height: 60px;
 }
 
 /* === RESET & BASE === */
@@ -104,7 +104,9 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100%;
+  height: 100dvh;
   overflow: hidden;
+  background: var(--bg-primary);
 }
 
 body {
@@ -114,6 +116,8 @@ body {
   background: var(--bg-primary);
   line-height: 1.5;
   height: 100%;
+  height: 100dvh;
+  width: 100%;
   overflow: hidden;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
@@ -125,6 +129,8 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
+  height: 100dvh;
+  width: 100%;
   max-width: 460px;
   margin: 0 auto;
   position: relative;
@@ -132,17 +138,18 @@ body {
   background: var(--bg-primary);
 }
 
-/* === TOP BAR === */
+/* === TOP BAR (Clean Dynamic Island integration, no blur smudge) === */
 .top-bar {
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--space-md) var(--space-lg);
-  padding-top: calc(var(--safe-top) + var(--space-xs));
+  padding: 10px var(--space-lg);
+  padding-top: max(env(safe-area-inset-top, 14px), 14px);
   background: var(--bg-primary);
   position: relative;
   z-index: var(--z-sticky);
-  border-bottom: 1px solid rgba(240, 230, 216, 0.6);
+  border-bottom: 1px solid rgba(240, 230, 216, 0.7);
 }
 
 .top-bar__title {
@@ -185,7 +192,7 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
-  padding-bottom: calc(var(--nav-height) + var(--safe-bottom) + var(--space-lg));
+  padding-bottom: var(--space-md);
   scroll-behavior: smooth;
 }
 
@@ -210,21 +217,20 @@ body {
   }
 }
 
-/* === 4-TAB BOTTOM NAV === */
+/* === 4-TAB BOTTOM NAV (Docked in flex layout, never floats or jumps) === */
 .bottom-nav {
+  flex-shrink: 0;
   display: flex;
-  align-items: stretch;
+  align-items: center;
   justify-content: space-around;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-top: 1.5px solid var(--border-light);
-  padding: 8px 12px;
-  padding-bottom: calc(var(--safe-bottom) + 4px);
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  padding: 6px 12px;
+  padding-bottom: max(env(safe-area-inset-bottom, 12px), 12px);
+  position: relative;
+  width: 100%;
   max-width: 460px;
   margin: 0 auto;
   z-index: var(--z-nav);

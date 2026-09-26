@@ -1,4 +1,4 @@
-const CACHE_NAME = 'hectic-v7';
+const CACHE_NAME = 'hectic-v8';
 
 const APP_SHELL = [
   '/',
