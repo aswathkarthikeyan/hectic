@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Hectic" />
+  <meta name="theme-color" content="#6C5CE7" />
+  <meta name="description" content="Hectic — Your personal timetable-aware task & deadline assistant 🐩" />
+
+  <title>Hectic 🐩</title>
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- Apple Touch Icon -->
+  <link rel="apple-touch-icon" href="icons/icon-192.svg" />
+
+  <!-- Splash Screens (iPhone 16 specific) -->
+  <link rel="apple-touch-startup-image" href="icons/icon-192.svg" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="icons/icon-192.svg" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css?v=7" />
+</head>
+<body>
+
+  <div id="app">
+    <!-- ═══ TOP BAR ═══ -->
+    <header class="top-bar">
+      <div>
+        <div class="top-bar__title">Hectic 🐩</div>
+        <div class="top-bar__subtitle">your smart personal companion 🐾</div>
+      </div>
+      <button class="top-bar__settings" id="top-settings-btn" aria-label="Settings" title="Settings">⚙️</button>
+    </header>
+
+    <!-- ═══ SCREEN CONTAINER ═══ -->
+    <main class="screen-container">
+      <!-- Today (Cockpit & Timeline) -->
+      <section id="screen-today" class="screen active">
+        <!-- Populated by today.js -->
+      </section>
+
+      <!-- Tasks (Manager & Grouping) -->
+      <section id="screen-tasks" class="screen">
+        <!-- Populated by tasks.js -->
+      </section>
+
+      <!-- Timetable (Grid & Free Gaps) -->
+      <section id="screen-timetable" class="screen">
+        <!-- Populated by timetable.js -->
+      </section>
+
+      <!-- Smart Brain (Learned Rules & Workload Radar) -->
+      <section id="screen-brain" class="screen">
+        <!-- Populated by patterns.js -->
+      </section>
+
+      <!-- Settings -->
+      <section id="screen-settings" class="screen">
+        <!-- Populated by app.js inline -->
+      </section>
+    </main>
+
+    <!-- ═══ 4-TAB BOTTOM NAV ═══ -->
+    <nav class="bottom-nav" role="navigation" aria-label="Main navigation">
+      <button class="nav-btn active" data-route="#/" aria-label="Today">
+        <span>📅</span>
+        <span class="nav-btn__label">Today</span>
+      </button>
+      <button class="nav-btn" data-route="#/tasks" aria-label="Tasks">
+        <span>📝</span>
+        <span class="nav-btn__label">Tasks</span>
+      </button>
+      <button class="nav-btn" data-route="#/timetable" aria-label="Classes">
+        <span>📚</span>
+        <span class="nav-btn__label">Classes</span>
+      </button>
+      <button class="nav-btn" data-route="#/brain" aria-label="Brain">
+        <span>🧠</span>
+        <span class="nav-btn__label">Brain</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- ═══ APP SCRIPT ═══ -->
+  <script type="module" src="js/app.js?v=7"></script>
+
+</body>
+</html>
